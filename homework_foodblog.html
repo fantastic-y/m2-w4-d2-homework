@@ -79,10 +79,31 @@
             font-size: 0.85em;
         }
         .modal {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.9);
             width: 300px;
-            height: 600px;
-            border-radius: 20%;
+            height: 400px;
+            border-radius: 10%;
+            color: white;
+            padding: 30px;
+            position: absolute;
+            top: 20%;
+        }
+        .model h1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+        .subtitle {
+            font-weight: bold;
+            font-size: 20px;
+            margin-top: 30px;
+            display: block;
+        }
+        .modalDisc {
+            font-weight: normal;
+            font-size: 18px;
+        }
+        .close-button {
+            margin-top: 70px;
         }
     </style>
 
@@ -118,15 +139,15 @@
                 </li>
             </ul>
 
-            <div class="modal" v-for="(post,index) in posts" :key="index" v-show="post.infobox">
-                <button class="close-button" type="button" @click="post.infobox = false;">Close</button>
-                <h3>{{ post.author }}</h3>
+            <div class="modal" v-for="post in posts" v-show="post.infobox">
+                <h1>{{ post.author }}</h1>
                 <div class="modalInfo">
-                <span class="subtitle">Foodie Level:</span>
-                <span class="modalDisc">{{ post.foodieLevel }}</span><br>
-                <span class="subtitle">Bio:</span>
-                <span class="modalDisc">{{ post.bio }}</span>
+                    <span class="subtitle">Foodie Level:</span>
+                    <span class="modalDisc">{{ post.foodieLevel }}</span><br>
+                    <span class="subtitle">Bio:</span>
+                    <span class="modalDisc">{{ post.bio }}</span>
                 </div>
+                <button class="close-button" type="button" @click="post.infobox = false;">Close</button>
             </div>
 
         </section>
@@ -205,24 +226,12 @@
         },
         methods: {
             authorinfo: function(posts,post) {
-                for (i=0; i < posts.length; i ++) {
+                for (i==0; i<4; i++) {
                     posts[i].infobox = !posts[i].infobox;
                 }
             }
         }
     });
-
-    //v-bind the profile image//
-    /*var vm3 = new Vue ({
-        el: '#databinding',
-        data:{
-            imgPath: 'images/profile.png',
-            styleobj: {
-                width: "40px",
-                float: "left"
-            }
-        }
-    });*/
 
 </script>
 
